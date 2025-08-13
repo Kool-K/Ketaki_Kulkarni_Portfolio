@@ -1,11 +1,8 @@
 # Ketaki Kulkarni - Personal Portfolio Website
 
-Welcome to the repository for my personal portfolio website. This project was built from scratch to not only showcase my skills and projects but to be a standout project in its own right, featuring a dynamic and interactive "Cosmic" theme.
+Welcome to the repository for my personal portfolio website. This project was built to not only showcase my skills and projects but to be a standout project in its own right, featuring a dynamic and interactive "Cosmic" theme.
 
 **[➡️ View the Live Demo Here](https://kool-k.github.io/Ketaki_Kulkarni_Portfolio/)**
-
-![Screenshot of Ketaki Kulkarni's Portfolio](images/project-readme-placeholder.png)
-*(Note: It's highly recommended to replace this placeholder with a real screenshot or a GIF of your finished portfolio!)*
 
 ---
 

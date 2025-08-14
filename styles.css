@@ -703,6 +703,7 @@ nav {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 20px; /* Added padding for better mobile spacing */
 }
 
 .timeline-container::after {
@@ -722,9 +723,10 @@ nav {
   padding: 10px 40px;
   position: relative;
   width: 50%;
+  margin-bottom: 30px; /* Added consistent spacing */
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
 }
 
 .timeline-item.visible {
@@ -732,8 +734,23 @@ nav {
   transform: translateY(0);
 }
 
-.timeline-item:nth-child(odd) { left: 0; }
-.timeline-item:nth-child(even) { left: 50%; }
+.timeline-item:nth-child(odd) {
+  left: 0;
+  transform: translateX(-20px);
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  transform: translateX(20px);
+}
+
+.timeline-item.visible:nth-child(odd) {
+  transform: translateX(0);
+}
+
+.timeline-item.visible:nth-child(even) {
+  transform: translateX(0);
+}
 
 .timeline-item::after {
   content: "";
@@ -746,21 +763,27 @@ nav {
   top: 30px;
   border-radius: 50%;
   z-index: 2;
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
-.timeline-item:nth-child(even)::after { left: -10px; }
+.timeline-item:nth-child(even)::after {
+  left: -10px;
+}
 
 .timeline-content {
-  padding: 30px;
+  padding: 25px;
   background: var(--secondary);
   border-radius: 10px;
   position: relative;
   border-left: 3px solid var(--accent);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
-.timeline-content:hover { transform: translateY(-5px); }
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
 
 .timeline-date {
   color: var(--accent);
@@ -1233,7 +1256,13 @@ footer::before {
   .timeline-item {
     width: 100%;
     padding-left: 70px; /* Space between line and content */
-    padding-right: 25px;
+    padding-right: 20px;
+    left: 0 !important; /* Important to override nth-child selectors */
+    transform: translateX(0) translateY(20px) !important;
+  }
+
+  .timeline-item.visible {
+    transform: translateX(0) translateY(0) !important;
   }
 
   .timeline-item::after {

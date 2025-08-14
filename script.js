@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(type, 1000);
     }
 
-    // --- SCROLL REVEAL ANIMATION ---
+    // // --- SCROLL REVEAL ANIMATION ---
     const animatedElements = document.querySelectorAll(
         ".project-card, .timeline-item, .achievement-card"
     );
@@ -89,6 +89,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     );
     animatedElements.forEach((element) => observer.observe(element));
+
+    // --- TIMELINE SCROLL ANIMATIONS ---
+    function animateTimelineOnScroll() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        animateTimelineOnScroll();
+    });
 
     // --- INTERACTIVE 3D CARD TILT EFFECT ---
     const cards = document.querySelectorAll(".project-card, .achievement-card");
@@ -363,5 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
         requestAnimationFrame(animateParticles);
     }
     animateParticles();
+
+
 
 });

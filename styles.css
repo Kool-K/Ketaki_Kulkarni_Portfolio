@@ -1278,7 +1278,6 @@ footer::before {
   }
 }
 
-
 /* === Center-align Section Titles on Small Screens === */
 @media (max-width: 768px) {
   .section-title h2 {

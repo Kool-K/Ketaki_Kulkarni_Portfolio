@@ -61,12 +61,8 @@ body::after {
 }
 
 @keyframes starsMove {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 1000px 500px;
-  }
+  from { background-position: 0 0; }
+  to { background-position: 1000px 500px; }
 }
 
 .container {
@@ -79,6 +75,11 @@ main {
   padding-top: 80px;
 }
 
+section {
+  padding: 120px 0;
+  position: relative;
+}
+
 /* === HEADER === */
 header {
   padding: 20px 0;
@@ -87,7 +88,7 @@ header {
   top: 0;
   z-index: 1000;
   transition: all 0.3s ease-in-out;
-  background: rgba(15, 15, 26, 0.85);
+  background: rgba(11, 15, 25, 0.85);
   backdrop-filter: blur(10px);
 }
 
@@ -235,9 +236,9 @@ nav {
 }
 
 .btn:hover {
-  background: var(--dark);
+  background: transparent;
   color: var(--light);
-  border-color: var(--dark);
+  border-color: var(--light);
   transform: translateY(-5px);
   box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.4);
 }
@@ -284,30 +285,9 @@ nav {
   animation: orbit linear infinite;
 }
 
-.orbit-1 {
-  width: 130%;
-  height: 130%;
-  top: -15%;
-  left: -15%;
-  animation-duration: 20s;
-}
-
-.orbit-2 {
-  width: 165%;
-  height: 165%;
-  top: -32.5%;
-  left: -32.5%;
-  animation-duration: 30s;
-  animation-direction: reverse;
-}
-
-.orbit-3 {
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  animation-duration: 40s;
-}
+.orbit-1 { width: 130%; height: 130%; top: -15%; left: -15%; animation-duration: 20s; }
+.orbit-2 { width: 165%; height: 165%; top: -32.5%; left: -32.5%; animation-duration: 30s; animation-direction: reverse; }
+.orbit-3 { width: 200%; height: 200%; top: -50%; left: -50%; animation-duration: 40s; }
 
 .tech-icon {
   position: absolute;
@@ -324,21 +304,9 @@ nav {
   transition: all 0.3s;
 }
 
-.orbit-1 .tech-icon {
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.orbit-2 .tech-icon {
-  top: 80%;
-  left: 10%;
-}
-
-.orbit-3 .tech-icon {
-  top: 60%;
-  left: 70%;
-}
+.orbit-1 .tech-icon { top: 10%; left: 50%; transform: translateX(-50%); }
+.orbit-2 .tech-icon { top: 80%; left: 10%; }
+.orbit-3 .tech-icon { top: 60%; left: 70%; }
 
 .tech-icon:hover {
   transform: scale(1.1);
@@ -347,12 +315,8 @@ nav {
 }
 
 @keyframes orbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .cursor {
@@ -363,30 +327,112 @@ nav {
   animation: blink 1s infinite;
 }
 
-.cursor.typing {
-  animation: none;
-}
+.cursor.typing { animation: none; }
 
 @keyframes blink {
-  0% {
-    background-color: var(--primary);
-  }
-  49% {
-    background-color: var(--primary);
-  }
-  50% {
-    background-color: transparent;
-  }
-  99% {
-    background-color: transparent;
-  }
-  100% {
-    background-color: var(--primary);
+  0%, 49% { background-color: var(--primary); }
+  50%, 99% { background-color: transparent; }
+  100% { background-color: var(--primary); }
+}
+
+/* === SECTION TITLE STYLES (Final Consolidated Version) === */
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--light);
+  text-shadow: 0 0 10px var(--primary-glow);
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.section-title p {
+  color: var(--gray);
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 16px;
+}
+
+/* NEW: Enlarge effect for ALL section headers */
+.section-title h2:hover {
+  letter-spacing: 10px;
+  transform: scale(1.1) translateY(4px);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* For headers with extra link buttons (Achievements case) */
+.section-header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 15px;
+}
+
+.section-header-link {
+  background: var(--secondary);
+  border: 1px solid var(--primary);
+  color: var(--primary) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.section-header-link i { margin-left: 8px; }
+
+.section-header-link:hover {
+  background: var(--primary);
+  color: var(--dark) !important;
+  box-shadow: 0 5px 15px var(--primary-glow);
+  transform: translateY(-3px);
+}
+
+/* Mobile-friendly hover fix */
+@media (max-width: 768px) {
+  .section-title h2:hover {
+    letter-spacing: 2px;
+    transform: scale(1.0);
+    color: var(--light);
   }
 }
 
-/* All other styles follow... */
 
+
+/* === SKILLS SECTION === */
 .skills {
   background-color: var(--dark);
   position: relative;
@@ -394,13 +440,13 @@ nav {
   padding-bottom: 80px;
 }
 
-/* Layout containers */
 .constellation-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 600px;
   position: relative;
+  animation: float 12s ease-in-out infinite, drift 15s ease-in-out infinite;
 }
 
 .constellation {
@@ -410,7 +456,6 @@ nav {
   margin: 0 auto 40px;
 }
 
-/* Stars */
 .skill-star {
   position: absolute;
   width: 60px;
@@ -427,47 +472,20 @@ nav {
   animation: star-pulse 4s infinite ease-in-out;
 }
 
-/* Prevent glow layers from blocking clicks */
-.skill-star i,
-.skill-star .skill-dot {
-  pointer-events: none;
-}
+.skill-star i, .skill-star .skill-dot { pointer-events: none; }
 
-/* Hover/Active state */
-.skill-star:hover,
-.skill-star.active {
+.skill-star:hover, .skill-star.active {
   transform: scale(1.3);
   color: var(--accent);
   filter: drop-shadow(0 0 20px var(--accent-glow));
   animation-play-state: paused;
 }
 
-.skill-star:hover i,
-.skill-star.active i {
-  color: var(--accent);
-}
-
-.skill-star:hover .skill-dot,
-.skill-star.active .skill-dot {
-  opacity: 1;
-  transform: scale(8);
-  background-color: rgba(0, 206, 201, 0.2);
-}
-
-/* Star pulse animation */
 @keyframes star-pulse {
-  0% {
-    filter: drop-shadow(0 0 8px var(--primary-glow));
-  }
-  50% {
-    filter: drop-shadow(0 0 16px var(--primary-glow));
-  }
-  100% {
-    filter: drop-shadow(0 0 8px var(--primary-glow));
-  }
+  0%, 100% { filter: drop-shadow(0 0 8px var(--primary-glow)); }
+  50% { filter: drop-shadow(0 0 16px var(--primary-glow)); }
 }
 
-/* Dot inside star */
 .skill-dot {
   position: absolute;
   width: 8px;
@@ -479,98 +497,41 @@ nav {
 }
 
 /* Star positions */
-.skill-star:nth-child(1) {
-  top: 15%;
-  left: 25%;
-}
-.skill-star:nth-child(2) {
-  top: 35%;
-  left: 75%;
-}
-.skill-star:nth-child(3) {
-  top: 75%;
-  left: 15%;
-}
-.skill-star:nth-child(4) {
-  top: 10%;
-  left: 50%;
-}
-.skill-star:nth-child(5) {
-  top: 65%;
-  left: 65%;
-}
-.skill-star:nth-child(6) {
-  top: 25%;
-  left: 10%;
-}
-.skill-star:nth-child(7) {
-  top: 85%;
-  left: 85%;
-}
-.skill-star:nth-child(8) {
-  top: 50%;
-  left: 35%;
-}
-.skill-star:nth-child(9) {
-  top: 20%;
-  left: 85%;
-}
-.skill-star:nth-child(10) {
-  top: 70%;
-  left: 50%;
-}
-.skill-star:nth-child(11) {
-  top: 40%;
-  left: 25%;
-}
-.skill-star:nth-child(12) {
-  top: 10%;
-  left: 15%;
-}
-.skill-star:nth-child(13) {
-  top: 60%;
-  left: 10%;
-}
-/* New skills */
-.skill-star:nth-child(14) {
-  top: 30%;
-  left: 55%;
-} /* Competitive Programming */
-.skill-star:nth-child(15) {
-  top: 45%;
-  left: 80%;
-} /* Prompt Engineering */
+.skill-star:nth-child(1) { top: 15%; left: 25%; }
+.skill-star:nth-child(2) { top: 35%; left: 75%; }
+.skill-star:nth-child(3) { top: 75%; left: 15%; }
+.skill-star:nth-child(4) { top: 10%; left: 50%; }
+.skill-star:nth-child(5) { top: 65%; left: 65%; }
+.skill-star:nth-child(6) { top: 25%; left: 10%; }
+.skill-star:nth-child(7) { top: 85%; left: 85%; }
+.skill-star:nth-child(8) { top: 50%; left: 35%; }
+.skill-star:nth-child(9) { top: 20%; left: 85%; }
+.skill-star:nth-child(10) { top: 70%; left: 50%; }
+.skill-star:nth-child(11) { top: 40%; left: 25%; }
+.skill-star:nth-child(12) { top: 10%; left: 15%; }
+.skill-star:nth-child(13) { top: 60%; left: 10%; }
+.skill-star:nth-child(14) { top: 30%; left: 55%; }
+.skill-star:nth-child(15) { top: 45%; left: 80%; }
 
-/* Connection lines */
 .connection {
   position: absolute;
   height: 1px;
-  background: linear-gradient(90deg, var(--primary), rgba(108, 92, 231, 0));
+  background: linear-gradient(90deg, rgba(229, 231, 235, 0.3), rgba(229, 231, 235, 0));
   z-index: 1;
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
-/* Connection pulse on hover */
 @keyframes pulse {
-  0% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0.3;
-  }
-}
-.constellation:hover .connection {
-  animation: pulse 2s infinite;
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
 
-/* Skill info panel */
+.constellation:hover .connection { animation: pulse 2s infinite; }
+
 .skill-info-display {
-  background: rgba(26, 26, 46, 0.8);
-  border: 1px solid rgba(108, 92, 231, 0.2);
+  background: rgba(11, 15, 25, 0.8);
+  border: 1px solid rgba(229, 231, 235, 0.1);
   border-radius: 15px;
   padding: 30px;
   width: 90%;
@@ -605,15 +566,16 @@ nav {
   line-height: 1.7;
 }
 
-.projects {
-  background-color: var(--secondary);
-}
+/* === PROJECTS SECTION === */
+.projects { background-color: var(--secondary); }
+
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 40px;
   perspective: 1500px;
 }
+
 .project-card {
   background: linear-gradient(145deg, #1e1e2a, #171722);
   border-radius: 15px;
@@ -624,6 +586,7 @@ nav {
   position: relative;
   overflow: hidden;
 }
+
 .project-card::before {
   content: "";
   position: absolute;
@@ -631,57 +594,54 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0) 50%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 50%);
   opacity: 0;
   transform: translateX(-100%);
   transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
 }
+
 .project-card:hover::before {
   opacity: 1;
   transform: translateX(0);
 }
+
 .project-image {
   position: relative;
   overflow: hidden;
   height: 220px;
 }
+
 .project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-/* In styles.css, REPLACE your old .project-image::after rule with this */
+
+.project-card:hover .project-image img { transform: scale(1.05); }
 
 .project-image::after {
-  content: attr(
-    data-category
-  ); /* CHANGED: Now uses our new category attribute */
+  content: attr(data-category);
   position: absolute;
   top: 20px;
   right: -30px;
   width: 120px;
   padding: 5px 0;
-  background: var(--accent); /* This is now white */
-  color: var(--dark); /* FIXED: Text is now dark for contrast */
+  background: var(--accent);
+  color: var(--dark);
   text-align: center;
   font-size: 12px;
   font-weight: bold;
   transform: rotate(45deg);
-  box-shadow: 0 0 10px rgba(0, 206, 201, 0.7);
+  box-shadow: 0 0 10px var(--accent-glow);
 }
+
 .project-content {
   padding: 25px;
   transform: translateZ(50px);
 }
+
 .project-icon {
   margin-right: 10px;
   color: var(--accent);
@@ -694,24 +654,28 @@ nav {
   color: var(--light);
   font-family: var(--font-heading);
 }
+
 .project-content p {
   color: var(--gray);
   margin-bottom: 20px;
 }
+
 .project-tech {
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .project-tech span {
-  background-color: rgba(108, 92, 231, 0.15);
+  background-color: rgba(60, 121, 245, 0.15);
   color: var(--primary);
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
 }
+
 .btn-link {
   color: var(--accent);
   text-decoration: none;
@@ -722,34 +686,25 @@ nav {
   align-items: center;
   gap: 5px;
 }
+
 .btn-link:hover {
   color: var(--light);
   text-shadow: 0 0 8px var(--accent-glow);
 }
+
+/* === JOURNEY / TIMELINE === */
 .journey {
   background-color: var(--dark);
   position: relative;
   overflow: hidden;
 }
-.journey::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 20% 50%,
-    rgba(0, 206, 201, 0.05) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
+
 .timeline-container {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
 }
+
 .timeline-container::after {
   content: "";
   position: absolute;
@@ -762,6 +717,7 @@ nav {
   border-radius: 2px;
   z-index: 1;
 }
+
 .timeline-item {
   padding: 10px 40px;
   position: relative;
@@ -770,16 +726,15 @@ nav {
   transform: translateY(50px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .timeline-item.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.timeline-item:nth-child(odd) {
-  left: 0;
-}
-.timeline-item:nth-child(even) {
-  left: 50%;
-}
+
+.timeline-item:nth-child(odd) { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; }
+
 .timeline-item::after {
   content: "";
   position: absolute;
@@ -792,9 +747,9 @@ nav {
   border-radius: 50%;
   z-index: 2;
 }
-.timeline-item:nth-child(even)::after {
-  left: -10px;
-}
+
+.timeline-item:nth-child(even)::after { left: -10px; }
+
 .timeline-content {
   padding: 30px;
   background: var(--secondary);
@@ -804,44 +759,49 @@ nav {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
-.timeline-content:hover {
-  transform: translateY(-5px);
-}
+
+.timeline-content:hover { transform: translateY(-5px); }
+
 .timeline-date {
   color: var(--accent);
   font-weight: 600;
   margin-bottom: 5px;
   font-size: 0.9rem;
 }
+
 .timeline-content h3 {
   margin-bottom: 5px;
   color: var(--light);
   font-family: var(--font-heading);
 }
+
 .timeline-content h4 {
   color: var(--gray);
   font-weight: 500;
   font-style: italic;
   margin-bottom: 10px;
 }
-.achievements {
-  background-color: var(--secondary);
-}
+
+/* === ACHIEVEMENTS === */
+.achievements { background-color: var(--secondary); }
+
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
+
 .achievement-card {
   background: var(--dark);
   border-radius: 10px;
   padding: 30px;
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid rgba(108, 92, 231, 0.1);
+  border: 1px solid rgba(60, 121, 245, 0.1);
   position: relative;
   overflow: hidden;
 }
+
 .achievement-card::before {
   content: "";
   position: absolute;
@@ -849,22 +809,19 @@ nav {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(108, 92, 231, 0.1) 0%,
-    rgba(108, 92, 231, 0) 70%
-  );
+  background: radial-gradient(circle, rgba(60, 121, 245, 0.1) 0%, rgba(60, 121, 245, 0) 70%);
   transform: rotate(45deg);
   z-index: 0;
   transition: all 0.6s ease;
 }
+
 .achievement-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px -10px rgba(108, 92, 231, 0.2);
+  box-shadow: 0 15px 30px -10px rgba(60, 121, 245, 0.2);
 }
-.achievement-card:hover::before {
-  transform: rotate(45deg) translate(20%, 20%);
-}
+
+.achievement-card:hover::before { transform: rotate(45deg) translate(20%, 20%); }
+
 .achievement-icon {
   width: 70px;
   height: 70px;
@@ -879,23 +836,28 @@ nav {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   position: relative;
 }
+
 .achievement-card h3 {
   font-family: var(--font-heading);
   margin-bottom: 10px;
   color: var(--light);
   position: relative;
 }
+
 .achievement-card p {
   color: var(--gray);
   font-size: 0.95rem;
   position: relative;
 }
+
+/* === FOOTER & CONTACT === */
 footer {
   text-align: center;
   padding: 100px 0 50px;
   background-color: var(--dark);
   position: relative;
 }
+
 footer::before {
   content: "";
   position: absolute;
@@ -903,16 +865,10 @@ footer::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle at center,
-    rgba(108, 92, 231, 0.05) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle at center, rgba(60, 121, 245, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
-.contact-info {
-  margin-bottom: 40px;
-}
+
 .social-links {
   display: flex;
   justify-content: center;
@@ -920,9 +876,9 @@ footer::before {
   margin-bottom: 40px;
   gap: 20px;
 }
-.social-links li {
-  margin: 0 10px;
-}
+
+.social-links li { margin: 0 10px; }
+
 .social-links a {
   display: flex;
   align-items: center;
@@ -935,20 +891,25 @@ footer::before {
   border-radius: 50%;
   transition: all 0.3s;
 }
+
 .social-links a:hover {
   color: var(--primary);
   transform: translateY(-5px);
   box-shadow: 0 5px 15px var(--primary-glow);
 }
+
 .copyright {
   color: var(--gray);
   font-size: 14px;
   margin-top: 30px;
 }
+
 .copyright i {
   color: var(--accent);
   margin: 0 5px;
 }
+
+/* === LOADING SCREEN === */
 .loading-screen {
   position: fixed;
   top: 0;
@@ -962,197 +923,26 @@ footer::before {
   z-index: 9999;
   transition: opacity 1s ease-out;
 }
-.loading-content {
-  text-align: center;
-}
+
+.loading-content { text-align: center; }
+
 .loading-spinner {
   width: 60px;
   height: 60px;
-  border: 5px solid rgba(108, 92, 231, 0.2);
+  border: 5px solid rgba(60, 121, 245, 0.2);
   border-top-color: var(--primary);
   border-radius: 50%;
   margin: 0 auto 20px;
   animation: spin 1s linear infinite;
 }
+
 .loading-content h2 {
   color: var(--light);
   font-family: var(--font-heading);
   letter-spacing: 1px;
 }
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.comet-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.comet-tail {
-  position: fixed;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  pointer-events: none;
-  z-index: 9998;
-  transform-origin: left center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-@media (max-width: 992px) {
-  .hero-content {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 40px;
-  }
-  .hero-image {
-    margin-bottom: 40px;
-    width: 300px;
-    height: 300px;
-  }
-  .hero-text h1 {
-    font-size: 3.5rem;
-  }
-  .hero-buttons {
-    justify-content: center;
-  }
-  .constellation {
-    width: 100%;
-    height: 300px;
-  }
-}
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 80px);
-    background: var(--dark);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    gap: 30px;
-  }
-  .nav-links.active {
-    left: 0;
-  }
-  .nav-links li {
-    margin-left: 0;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .hamburger.active .line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .hamburger.active .line:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active .line:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-  .timeline-container::after {
-    left: 31px;
-  }
-  .timeline-item {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
-  }
-  .timeline-item:nth-child(even) {
-    left: 0%;
-  }
-  .timeline-item::after {
-    left: 21px;
-  }
-  .achievements-grid {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 576px) {
-  section {
-    padding: 80px 0;
-  }
-  .hero-text h1 {
-    font-size: 2.8rem;
-  }
-  .hero-text p {
-    font-size: 1rem;
-  }
-  .btn {
-    padding: 12px 25px;
-    font-size: 14px;
-  }
 
-  .section-header-container:hover h2 {
-    letter-spacing: 10px;
-    transform: scale(1.1);
-    color: var(--accent);
-    margin-bottom: 35px;
-    white-space: nowrap; /* Keep this line from our previous fix! */
-  }
-
-  .section-title p {
-    font-size: 1rem;
-  }
-}
-
-/* In styles.css, REPLACE the old scroll-down animation block with this new one */
-
-/* === SCROLL DOWN CHEVRON === */
-.scroll-down-link {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  cursor: pointer;
-  color: var(--light);
-  font-size: 1.5rem;
-  opacity: 0.7;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.scroll-down-link:hover {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-5px);
-}
-
-.scroll-down-link i {
-  animation: bounce-chevron 2s infinite;
-}
-
-@keyframes bounce-chevron {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
-/* ADD THESE NEW BLOCKS TO THE BOTTOM of styles.css */
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* === ANIMATED EMAIL ICON === */
 .contact-icon-container {
@@ -1236,13 +1026,7 @@ footer::before {
 .animated-mail .letter-border {
   height: 10px;
   width: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--accent),
-    var(--accent) 8px,
-    transparent 8px,
-    transparent 18px
-  );
+  background: repeating-linear-gradient(-45deg, var(--accent), var(--accent) 8px, transparent 8px, transparent 18px);
 }
 
 .animated-mail .letter-title {
@@ -1280,45 +1064,31 @@ footer::before {
   transition: 0.4s;
   transform: translateX(-50%);
   border-radius: 100%;
-  background: radial-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0)
-  );
+  background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
 }
 
-.letter-image:hover .animated-mail {
-  transform: translateY(50px);
-}
-
+.letter-image:hover .animated-mail { transform: translateY(50px); }
 .letter-image:hover .animated-mail .top-fold {
   transition: transform 0.4s, z-index 0.2s;
   transform: rotateX(180deg);
   z-index: 0;
 }
+.letter-image:hover .animated-mail .letter { height: 180px; }
+.letter-image:hover .shadow { width: 250px; }
 
-.letter-image:hover .animated-mail .letter {
-  height: 180px;
-}
-
-.letter-image:hover .shadow {
-  width: 250px;
-}
-
-/* Styles for the combined icon and text link */
 .animated-contact-link {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  gap: 15px; /* Space between envelope and text */
+  gap: 15px;
 }
 
 .contact-text {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--primary); /* Silver/White color */
+  color: var(--primary);
   transition: all 0.3s ease;
 }
 
@@ -1327,165 +1097,55 @@ footer::before {
   text-shadow: 0 0 15px var(--primary-glow);
 }
 
-/* ADD THIS TO THE BOTTOM of your styles.css file */
-
-/* === AMBIENT ANIMATIONS === */
-
-/* 1. Define the Keyframe Animations */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes drift {
-  0% {
-    transform: translateX(-15px);
-  }
-  50% {
-    transform: translateX(15px);
-  }
-  100% {
-    transform: translateX(-15px);
-  }
-}
-
-/* 2. Apply 'float' to Hero Section Elements */
-.hero-text,
-.hero-image {
-  /* Note: your elements might already have this from a previous step, this ensures it's correct */
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Stagger the image animation slightly so it's not in sync with the text */
-.hero-image {
-  animation-delay: 0.5s;
-}
-
-/* 3. Apply combined 'float' and 'drift' to the Constellation */
-.constellation-container {
-  animation: float 12s ease-in-out infinite,
-    /* Slower float */ drift 15s ease-in-out infinite; /* Slow drift */
-}
-
-/* ADD THIS to the bottom of your styles.css file */
-
-/* --- COPIED FEEDBACK STYLE --- */
 .animated-contact-link.copied .contact-text {
-  color: var(--accent); /* Changes text to the theme's blue accent color */
+  color: var(--accent);
   text-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* === SECTION TITLE STYLES (Final Consolidated Version) === */
-section {
-  padding: 120px 0;
-  position: relative;
-}
-
-.section-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 60px;
-}
-
-.section-title h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  margin-bottom: 35px; /* Set the FINAL margin here and don't change it on hover */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--light);
-  text-shadow: 0 0 10px var(--primary-glow);
-  position: relative;
-  display: inline-block;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* The expanding hover effect - now applies to ALL titles */
-.section-title h2:hover {
-  letter-spacing: 10px;
-  transform: scale(1.1);
-  color: var(--accent);
-  margin-bottom: 35px;
-}
-
-.section-title h2::after {
-  content: "";
+/* === SCROLL DOWN CHEVRON === */
+.scroll-down-link {
   position: absolute;
-  bottom: -10px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: 3px;
-}
-
-/* The container for the header and button */
-.section-header-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 15px;
-  /* REMOVED flex-wrap: wrap; to prevent the button from dropping down */
-}
-
-/* The button next to the header */
-.section-header-link {
-  background: var(--secondary);
-  border: 1px solid var(--primary);
-  color: var(--primary) !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none !important;
-  transition: all 0.3s ease;
+  z-index: 5;
   cursor: pointer;
-  white-space: nowrap; /* Prevents the button text from wrapping */
+  color: var(--light);
+  font-size: 1.5rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.section-header-link i {
-  margin-left: 8px;
+.scroll-down-link:hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
 }
 
-.section-header-link:hover {
-  background: var(--primary);
-  color: var(--dark) !important;
-  box-shadow: 0 5px 15px var(--primary-glow);
-  transform: translateY(-3px);
+.scroll-down-link i { animation: bounce-chevron 2s infinite; }
+
+@keyframes bounce-chevron {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 
-/* /ripple effect css */
-/* ADD THIS to the bottom of your styles.css file */
+/* === AMBIENT ANIMATIONS === */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
 
-/* --- CONSTELLATION RIPPLE EFFECT --- */
+@keyframes drift {
+  0%, 100% { transform: translateX(-15px); }
+  50% { transform: translateX(15px); }
+}
+
+/* === CONSTELLATION RIPPLE EFFECT === */
 @keyframes ripple {
-  from {
-    transform: scale(1);
-    opacity: 0.7;
-    border-width: 2px;
-  }
-  to {
-    transform: scale(5);
-    opacity: 0;
-    border-width: 1px;
-  }
+  from { transform: scale(1); opacity: 0.7; border-width: 2px; }
+  to { transform: scale(5); opacity: 0; border-width: 1px; }
 }
 
-/* Create the ripple using a pseudo-element on the featured skill */
 .skill-star.featured-skill::before {
   content: "";
   position: absolute;
@@ -1493,40 +1153,106 @@ section {
   height: 100%;
   border-radius: 50%;
   border: 2px solid var(--primary);
-  /* The animation runs once, for 1.5 seconds */
   animation: ripple 1.5s ease-out forwards;
 }
 
-/* mobile responsivity */
-/* --- Mobile Responsive Fixes --- */
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-image {
+    margin-bottom: 40px;
+    width: 300px;
+    height: 300px;
+  }
+  .hero-text h1 { font-size: 3.5rem; }
+  .hero-buttons { justify-content: center; }
+  .constellation {
+    width: 100%;
+    height: 300px;
+  }
+}
 
-/* Target screens with a max-width of 600px (typical for phones) */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: var(--dark);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    gap: 30px;
+  }
+  .nav-links.active { left: 0; }
+  .nav-links li { margin-left: 0; }
+  .hamburger { display: flex; }
+  .hamburger.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active .line:nth-child(2) { opacity: 0; }
+  .hamburger.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .projects-container { grid-template-columns: 1fr; }
+  .timeline-container::after { left: 31px; }
+  .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+  .timeline-item:nth-child(even) { left: 0%; }
+  .timeline-item::after { left: 21px; }
+  .achievements-grid { grid-template-columns: 1fr; }
+
+  /* --- FIX FOR MOBILE HOVER --- */
+  .section-header-container:hover h2 {
+    letter-spacing: 2px;
+    transform: scale(1.0);
+    color: var(--light);
+  }
+}
+
 @media (max-width: 600px) {
+  section { padding: 80px 0; }
+  .hero-text h1 { font-size: 2.8rem; }
+  .hero-text p { font-size: 1rem; }
+  .btn { padding: 12px 25px; font-size: 14px; }
   .section-header-container {
-    flex-direction: column; /* Stack items vertically instead of side-by-side */
-    align-items: center; /* Align to the left */
-    gap: 16px; /* Add some space between the title and the button */
-  }
-
-  .skill-constellation-container {
-    /* Use the correct class name for your container */
-    transform: scale(0.8); /* Shrinks the whole graphic to 80% of its size */
-    transform-origin: top center; /* Shrinks it from the top-center point */
-    margin-bottom: -50px; /* Adjust margin if the scaling creates too much empty space */
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
   }
 }
-/* --- Final Polish & Responsive Fixes --- */
+/* === Fix Timeline Circles & Line for Small Screens === */
+/* === Perfectly align timeline circles & line for mobile === */
+/* === Timeline Responsive Fix === */
+@media (max-width: 768px) {
+  .timeline-container::after {
+    left: 28px; /* Vertical line position - perfectly centered */
+  }
 
-/* Fix 1: Center-align all section subtitles */
-.section-title p {
-  text-align: center;
-  /* This helps keep long subtitles neat on big screens */
-  max-width: 550px;
-  margin-left: auto;
-  margin-right: auto;
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px; /* Space between line and content */
+    padding-right: 25px;
+  }
+
+  .timeline-item::after {
+    left: 19px; /* Circle centers perfectly on vertical line */
+    right: auto;
+    width: 18px;
+    height: 18px;
+    top: 25px;
+  }
+
+  .timeline-content {
+    padding: 20px;
+  }
 }
 
-/* Fix 2: Prevent title from breaking on hover on narrow screens */
-.section-title h2:hover {
-  white-space: nowrap; /* This is the magic line that stops the text from wrapping */
+
+/* === Center-align Section Titles on Small Screens === */
+@media (max-width: 768px) {
+  .section-title h2 {
+    text-align: center;
+  }
 }

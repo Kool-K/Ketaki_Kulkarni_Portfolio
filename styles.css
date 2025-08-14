@@ -1509,3 +1509,23 @@ section {
   /* The animation runs once, for 1.5 seconds */
   animation: ripple 1.5s ease-out forwards;
 }
+
+/* mobile responsivity */
+/* --- Mobile Responsive Fixes --- */
+
+/* Target screens with a max-width of 600px (typical for phones) */
+@media (max-width: 600px) {
+  
+  .section-header-container { 
+    flex-direction: column; /* Stack items vertically instead of side-by-side */
+    align-items: flex-start; /* Align to the left */
+    gap: 16px; /* Add some space between the title and the button */
+  }
+
+.skill-constellation-container { /* Use the correct class name for your container */
+  transform: scale(0.8); /* Shrinks the whole graphic to 80% of its size */
+  transform-origin: top center; /* Shrinks it from the top-center point */
+  margin-bottom: -50px; /* Adjust margin if the scaling creates too much empty space */
+}
+
+}

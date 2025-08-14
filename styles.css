@@ -1098,14 +1098,13 @@ footer::before {
     font-size: 14px;
   }
 
-
-.section-header-container:hover h2 {
-  letter-spacing: 10px;
-  transform: scale(1.1);
-  color: var(--accent);
-  margin-bottom: 35px;
-  white-space: nowrap; /* Keep this line from our previous fix! */
-}
+  .section-header-container:hover h2 {
+    letter-spacing: 10px;
+    transform: scale(1.1);
+    color: var(--accent);
+    margin-bottom: 35px;
+    white-space: nowrap; /* Keep this line from our previous fix! */
+  }
 
   .section-title p {
     font-size: 1rem;
@@ -1396,8 +1395,6 @@ section {
   margin-bottom: 60px;
 }
 
-
-
 .section-title h2 {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 2.8rem);
@@ -1505,19 +1502,18 @@ section {
 
 /* Target screens with a max-width of 600px (typical for phones) */
 @media (max-width: 600px) {
-  
-  .section-header-container { 
+  .section-header-container {
     flex-direction: column; /* Stack items vertically instead of side-by-side */
     align-items: center; /* Align to the left */
     gap: 16px; /* Add some space between the title and the button */
   }
 
-  .skill-constellation-container { /* Use the correct class name for your container */
+  .skill-constellation-container {
+    /* Use the correct class name for your container */
     transform: scale(0.8); /* Shrinks the whole graphic to 80% of its size */
     transform-origin: top center; /* Shrinks it from the top-center point */
     margin-bottom: -50px; /* Adjust margin if the scaling creates too much empty space */
   }
-
 }
 /* --- Final Polish & Responsive Fixes --- */
 
@@ -1525,7 +1521,7 @@ section {
 .section-title p {
   text-align: center;
   /* This helps keep long subtitles neat on big screens */
-  max-width: 550px; 
+  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
 }

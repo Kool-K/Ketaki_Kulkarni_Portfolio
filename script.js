@@ -129,12 +129,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const skillInfoName = document.querySelector('.skill-info-name');
     const skillInfoDesc = document.querySelector('.skill-info-desc');
 
-    function showSkillInfo(skillName) {
+
+
+    function showSkillInfo(skillName, shouldScroll = false) {
         if (!skillsData[skillName] || !skillInfoDisplay) return;
+
         skillInfoName.textContent = skillName;
         skillInfoDesc.textContent = skillsData[skillName];
         skillInfoDisplay.classList.add('active');
-        skillInfoDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // This line will now only run if shouldScroll is true
+        if (shouldScroll) {
+            skillInfoDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
         skillStars.forEach(s => {
             s.classList.remove('active');
@@ -144,10 +151,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
     skillStars.forEach(star => {
         star.addEventListener('click', () => {
             const skill = star.getAttribute('data-skill');
-            showSkillInfo(skill);
+            showSkillInfo(skill, true); // We pass 'true' here to enable scrolling
         });
     });
 
@@ -206,9 +214,36 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    /* ADD THIS NEW FUNCTION to your script.js file */
+
+    // --- SKILL CONSTELLATION - DEFAULT SELECTION ---
+    function initializeConstellation() {
+        const pythonStar = document.querySelector('.skill-star[data-skill="Python"]');
+        if (pythonStar) {
+            // Show the info for Python by default
+            showSkillInfo('Python');
+
+            // Add a class to trigger a one-time animation
+            pythonStar.classList.add('featured-skill');
+
+            // Optional: Remove the class after the animation so it doesn't conflict with hover
+            setTimeout(() => {
+                pythonStar.classList.remove('featured-skill');
+            }, 1500); // Must be the same duration as the CSS animation
+        }
+    }
+
+
     window.addEventListener('load', createConnections);
     window.addEventListener('resize', createConnections);
 
+
+    /* ADD THIS LINE to your script.js file */
+
+    // Initialize the default selection after the page loads
+    window.addEventListener('load', () => {
+        setTimeout(initializeConstellation, 500); // 500ms delay for a smoother effect
+    });
 
     // --- CV DOWNLOAD LINK JS VERSION if required later---
 

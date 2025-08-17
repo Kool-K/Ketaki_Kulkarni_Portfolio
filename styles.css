@@ -421,17 +421,6 @@ nav {
   transform: translateY(-3px);
 }
 
-/* Mobile-friendly hover fix */
-@media (max-width: 768px) {
-  .section-title h2:hover {
-    letter-spacing: 2px;
-    transform: scale(1.0);
-    color: var(--light);
-  }
-}
-
-
-
 /* === SKILLS SECTION === */
 .skills {
   background-color: var(--dark);
@@ -1199,7 +1188,20 @@ footer::before {
   }
 }
 
+@media (max-width: 600px) {
+  section { padding: 80px 0; }
+  .hero-text h1 { font-size: 2.8rem; }
+  .hero-text p { font-size: 1rem; }
+  .btn { padding: 12px 25px; font-size: 14px; }
+  .section-header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
 @media (max-width: 768px) {
+  /* --- Navigation & Layouts --- */
   .nav-links {
     position: fixed;
     top: 80px;
@@ -1220,67 +1222,42 @@ footer::before {
   .hamburger.active .line:nth-child(2) { opacity: 0; }
   .hamburger.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
   .projects-container { grid-template-columns: 1fr; }
-  .timeline-container::after { left: 31px; }
-  .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-  .timeline-item:nth-child(even) { left: 0%; }
-  .timeline-item::after { left: 21px; }
   .achievements-grid { grid-template-columns: 1fr; }
 
-  /* --- FIX FOR MOBILE HOVER --- */
-  .section-header-container:hover h2 {
+  /* --- Section Title Fixes --- */
+  .section-title h2 {
+    text-align: center;
+  }
+  .section-title h2:hover {
     letter-spacing: 2px;
     transform: scale(1.0);
     color: var(--light);
   }
-}
 
-@media (max-width: 600px) {
-  section { padding: 80px 0; }
-  .hero-text h1 { font-size: 2.8rem; }
-  .hero-text p { font-size: 1rem; }
-  .btn { padding: 12px 25px; font-size: 14px; }
-  .section-header-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-}
-/* === Fix Timeline Circles & Line for Small Screens === */
-/* === Perfectly align timeline circles & line for mobile === */
-/* === Timeline Responsive Fix === */
-@media (max-width: 768px) {
+  /* --- Timeline Fixes --- */
   .timeline-container::after {
-    left: 28px; /* Vertical line position - perfectly centered */
+    left: 28px;
   }
-
   .timeline-item {
     width: 100%;
-    padding-left: 70px; /* Space between line and content */
+    padding-left: 70px;
     padding-right: 20px;
-    left: 0 !important; /* Important to override nth-child selectors */
+    left: 0 !important;
     transform: translateX(0) translateY(20px) !important;
   }
-
   .timeline-item.visible {
     transform: translateX(0) translateY(0) !important;
   }
-
   .timeline-item::after {
-    left: 19px; /* Circle centers perfectly on vertical line */
+    left: 19px;
     right: auto;
     width: 18px;
     height: 18px;
     top: 25px;
   }
-
   .timeline-content {
     padding: 20px;
   }
 }
 
-/* === Center-align Section Titles on Small Screens === */
-@media (max-width: 768px) {
-  .section-title h2 {
-    text-align: center;
-  }
-}
+

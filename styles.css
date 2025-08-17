@@ -1452,23 +1452,21 @@ footer::before {
     transform: translateY(-8px) rotate(-45deg);
   }
 
-  /* --- MOBILE NAVIGATION MENU --- */
+  /* --- MOBILE NAVIGATION MENU (FINAL FIX) --- */
   .nav-links {
     position: fixed;
-    top: 80px; /* Height of the header */
+    top: 80px;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 80px); /* Fill the rest of the screen */
+    height: calc(100vh - 80px);
     background: var(--dark);
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; 
+    
+    /* SWITCH TO BLOCK LAYOUT FOR FLAWLESS SCROLLING */
+    display: block;
+    overflow-y: auto; /* Allow scrolling */
+    padding: 40px 0; /* Add top and bottom spacing */
+    
     transition: all 0.5s ease;
-    gap: 15px;
-
-    /* --- THE FIX FOR SCROLLING --- */
-    overflow-y: auto; /* Allows vertical scrolling if content overflows */
-    padding: 40px 0; /* Adds some space at the top and bottom */
   }
 
   .nav-links.active {
@@ -1480,30 +1478,18 @@ footer::before {
     margin-left: 0;
     width: 100%;
     text-align: center;
-    opacity: 0; /* Initially hidden for animation */
-    transform: translateX(-20px); /* Initially off-screen for animation */
+    opacity: 0;
+    transform: translateX(-20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
-
+  
   /* Staggered animation for links appearing */
-  .nav-links.active li:nth-child(1) {
-    transition-delay: 0.1s;
-  }
-  .nav-links.active li:nth-child(2) {
-    transition-delay: 0.2s;
-  }
-  .nav-links.active li:nth-child(3) {
-    transition-delay: 0.3s;
-  }
-  .nav-links.active li:nth-child(4) {
-    transition-delay: 0.4s;
-  }
-  .nav-links.active li:nth-child(5) {
-    transition-delay: 0.5s;
-  }
-  .nav-links.active li:nth-child(6) {
-    transition-delay: 0.6s;
-  }
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+  .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+  .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
 
   /* Animate links into view when menu is active */
   .nav-links.active li {
@@ -1512,16 +1498,31 @@ footer::before {
   }
 
   .nav-links a {
-    font-size: 1.5rem; /* Larger, more tappable font size */
-    font-family: var(--font-heading); /* More stylish font */
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
     padding: 15px;
-    display: block; /* Makes the entire area clickable */
+    display: block;
     transition: color 0.3s ease, transform 0.3s ease;
   }
 
   .nav-links a:hover,
   .nav-links a:focus {
-    color: var(--accent); /* Highlight with your accent color */
-    transform: scale(1.1); /* Nice hover effect */
+    color: var(--accent);
+    transform: scale(1.1);
   }
+
+  /* --- FIX FOR HEADER HOVER EFFECT ON ZOOM --- */
+  .section-title h2:hover {
+    letter-spacing: 2px; /* Revert to the default non-hover letter-spacing */
+    transform: none; /* Completely disable the scale/translate effect */
+    color: var(--light); /* Revert to the default non-hover color */
+  }
+
+  /* --- Other mobile fixes from your original file --- */
+  .projects-container { grid-template-columns: 1fr; }
+  .timeline-container::after { left: 31px; }
+  .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+  .timeline-item:nth-child(even) { left: 0%; }
+  .timeline-item::after { left: 21px; }
+  .achievements-grid { grid-template-columns: 1fr; }
 }

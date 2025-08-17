@@ -1295,10 +1295,9 @@ footer::before {
   animation: bounce-chevron 2s infinite;
 }
 
-
 /* --- "Click Me" Prompt on Skill Star --- */
 .call-to-action-star::after {
-  content: 'Click Me!';
+  content: "Click Me!";
   position: absolute;
   top: -45px; /* Position it above the star */
   left: 50%;
@@ -1321,7 +1320,8 @@ footer::before {
 
 /* Animation for the bubble */
 @keyframes flashy-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, 0);
     box-shadow: 0 0 15px var(--accent-glow);
   }
@@ -1460,12 +1460,12 @@ footer::before {
     width: 100%;
     height: calc(100vh - 80px);
     background: var(--dark);
-    
+
     /* SWITCH TO BLOCK LAYOUT FOR FLAWLESS SCROLLING */
     display: block;
     overflow-y: auto; /* Allow scrolling */
     padding: 40px 0; /* Add top and bottom spacing */
-    
+
     transition: all 0.5s ease;
   }
 
@@ -1482,14 +1482,26 @@ footer::before {
     transform: translateX(-20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  
+
   /* Staggered animation for links appearing */
-  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
-  .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
-  .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
-  .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
-  .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
-  .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
+  .nav-links.active li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .nav-links.active li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .nav-links.active li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .nav-links.active li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .nav-links.active li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  .nav-links.active li:nth-child(6) {
+    transition-delay: 0.6s;
+  }
 
   /* Animate links into view when menu is active */
   .nav-links.active li {
@@ -1519,10 +1531,25 @@ footer::before {
   }
 
   /* --- Other mobile fixes from your original file --- */
-  .projects-container { grid-template-columns: 1fr; }
-  .timeline-container::after { left: 31px; }
-  .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-  .timeline-item:nth-child(even) { left: 0%; }
-  .timeline-item::after { left: 21px; }
-  .achievements-grid { grid-template-columns: 1fr; }
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+  .timeline-container::after {
+    left: 31px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  .timeline-item:nth-child(even) {
+    left: 0%;
+  }
+  .timeline-item::after {
+    display: none;
+  } /*This will remove journey card circles for smaller screens and zoomed screens*/
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
 }

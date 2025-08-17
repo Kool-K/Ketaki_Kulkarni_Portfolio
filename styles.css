@@ -1201,62 +1201,79 @@ footer::before {
 }
 
 @media (max-width: 768px) {
-  /* --- Navigation & Layouts --- */
+  /* --- HAMBURGER ICON --- */
+  .hamburger {
+    display: flex;
+  }
+  .hamburger.active .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* --- MOBILE NAVIGATION MENU --- */
   .nav-links {
     position: fixed;
-    top: 80px;
+    top: 80px; /* Height of the header */
     left: -100%;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 80px); /* Fill the rest of the screen */
     background: var(--dark);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.5s ease;
-    gap: 30px;
-  }
-  .nav-links.active { left: 0; }
-  .nav-links li { margin-left: 0; }
-  .hamburger { display: flex; }
-  .hamburger.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .hamburger.active .line:nth-child(2) { opacity: 0; }
-  .hamburger.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-  .projects-container { grid-template-columns: 1fr; }
-  .achievements-grid { grid-template-columns: 1fr; }
+    gap: 15px;
 
-  /* --- Section Title --- */
-  .section-title h2 {
-    text-align: center;
-  }
-  .section-title h2:hover {
-    letter-spacing: 2px;
-    transform: scale(1.0);
-    color: var(--light);
+    /* --- THE FIX FOR SCROLLING --- */
+    overflow-y: auto; /* Allows vertical scrolling if content overflows */
+    padding: 40px 0; /* Adds some space at the top and bottom */
   }
 
-  /* --- Timeline --- */
-  .timeline-container::after {
-    left: 28px;
+  .nav-links.active {
+    left: 0;
   }
-  .timeline-item {
+
+  /* --- STYLING FOR THE LINKS --- */
+  .nav-links li {
+    margin-left: 0;
     width: 100%;
-    padding-left: 70px;
-    padding-right: 20px;
-    left: 0 !important;
-    transform: translateX(0) translateY(20px) !important;
+    text-align: center;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateX(-20px); /* Initially off-screen for animation */
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  .timeline-item.visible {
-    transform: translateX(0) translateY(0) !important;
+  
+  /* Staggered animation for links appearing */
+  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.4s; }
+  .nav-links.active li:nth-child(5) { transition-delay: 0.5s; }
+  .nav-links.active li:nth-child(6) { transition-delay: 0.6s; }
+
+  /* Animate links into view when menu is active */
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
   }
-  .timeline-item::after {
-    left: 19px;
-    right: auto;
-    width: 18px;
-    height: 18px;
-    top: 25px;
+
+  .nav-links a {
+    font-size: 1.5rem; /* Larger, more tappable font size */
+    font-family: var(--font-heading); /* More stylish font */
+    padding: 15px;
+    display: block; /* Makes the entire area clickable */
+    transition: color 0.3s ease, transform 0.3s ease;
   }
-  .timeline-content {
-    padding: 20px;
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: var(--accent); /* Highlight with your accent color */
+    transform: scale(1.1); /* Nice hover effect */
   }
 }
 

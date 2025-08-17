@@ -180,6 +180,8 @@ document.addEventListener("DOMContentLoaded", function () {
         star.addEventListener('click', () => {
             const skill = star.getAttribute('data-skill');
             showSkillInfo(skill, true); // pass 'true' here to enable scrolling
+            // This adds a class to the parent container to hide the "Click Me" bubble
+            document.querySelector('.constellation-container').classList.add('interacted');
         });
     });
 

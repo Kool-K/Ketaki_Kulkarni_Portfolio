@@ -25,7 +25,7 @@ This project was built using fundamental web technologies to demonstrate core de
 
 * **Frontend:** HTML5, CSS3 (Custom Properties, Flexbox, Grid), Vanilla JavaScript (ES6+)
 * **Libraries:** Font Awesome for icons.
-* **Deployment:** GitHub Pages (or your chosen platform).
+* **Deployment:** GitHub Pages.
 
 ---
 
@@ -35,20 +35,20 @@ To run this project on your local machine, follow these simple steps:
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    git clone [https://github.com/Kool-K/Ketaki_Kulkarni_Portfolio.git](https://github.com/Kool-K/Ketaki_Kulkarni_Portfolio.git)
     ```
 2.  **Navigate to the project directory:**
     ```sh
-    cd your-repo-name
+    cd Ketaki_Kulkarni_Portfolio
     ```
 3.  **Open the `index.html` file** in your web browser.
-    * For the best experience and to ensure all features (like the CV download) work correctly, it's recommended to use a local server. The **Live Server** extension in VS Code is a great option for this.
+    * For the best development experience, it's recommended to use a local server. The **Live Server** extension in VS Code is a great option for this.
 
 ---
 
 ## 📬 Contact
 
-* [cite_start]**Email:** ketakisk2018@gmail.com [cite: 10]
+* **Email:** ketakisk2018@gmail.com
 * **LinkedIn:** [linkedin.com/in/ketakik17/](https://www.linkedin.com/in/ketakik17/)
 * **GitHub:** [github.com/Kool-K](https://github.com/Kool-K)
-* **CodeChef:** [codechef.com/users/kool_k_17](https://www.codechef.com/users/kool_k_17)
+* **CodeChef:** [codechef.com/users/kool\_k\_17](https://www.codechef.com/users/kool_k_17)

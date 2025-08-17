@@ -163,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
         skillInfoDesc.textContent = skillsData[skillName];
         skillInfoDisplay.classList.add('active');
 
-        // This line will now only run if shouldScroll is true
         if (shouldScroll) {
             skillInfoDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -180,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
     skillStars.forEach(star => {
         star.addEventListener('click', () => {
             const skill = star.getAttribute('data-skill');
-            showSkillInfo(skill, true); // We pass 'true' here to enable scrolling
+            showSkillInfo(skill, true); // pass 'true' here to enable scrolling
         });
     });
 
@@ -191,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const stars = Array.from(document.querySelectorAll('.skill-star'));
         document.querySelectorAll('.connection').forEach(el => el.remove());
 
-        // Updated connections including the two new stars (indexes 13 and 14)
+        // Updated connections (indexes 13 and 14 included)
         const connections = [
             [0, 4], [0, 7], [0, 10],
             [1, 10], [1, 3],
@@ -203,10 +202,10 @@ document.addEventListener("DOMContentLoaded", function () {
             [8, 9],
             [11, 12],
 
-            // NEW connections for star 13
+            // new conn for star 13
             [13, 0], [13, 5], [13, 8],
 
-            // NEW connections for star 14
+            // new conn for star 14
             [14, 2], [14, 6], [14, 9]
         ];
 
@@ -239,7 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* ADD THIS NEW FUNCTION to your script.js file */
 
     // --- SKILL CONSTELLATION - DEFAULT SELECTION ---
     function initializeConstellation() {
@@ -251,10 +249,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // Add a class to trigger a one-time animation
             pythonStar.classList.add('featured-skill');
 
-            // Optional: Remove the class after the animation so it doesn't conflict with hover
+            // Remove the class after the animation so it doesn't conflict with hover -> optional
             setTimeout(() => {
                 pythonStar.classList.remove('featured-skill');
-            }, 1500); // Must be the same duration as the CSS animation
+            }, 1500); // IT Must be the same duration as the CSS animation
         }
     }
 
@@ -262,15 +260,12 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('load', createConnections);
     window.addEventListener('resize', createConnections);
 
-
-    /* ADD THIS LINE to your script.js file */
-
     // Initialize the default selection after the page loads
     window.addEventListener('load', () => {
         setTimeout(initializeConstellation, 500); // 500ms delay for a smoother effect
     });
 
-    // --- CV DOWNLOAD LINK JS VERSION if required later---
+    // --- cv download in JS if required later check it once...---
 
     // const downloadBtn = document.getElementById('download-cv');
     // if (downloadBtn) {

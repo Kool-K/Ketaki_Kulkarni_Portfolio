@@ -1,10 +1,10 @@
-/* === ROOT VARIABLES & GLOBAL STYLES === */
+/* Root var and global styles */
 :root {
-  --primary: #e5e7eb; /* Primary action color is Silver/White */
+  --primary: #e5e7eb; /* Primary action color - Silver/White */
   --secondary: #101828; /* A very dark, slightly blue cosmic background */
   --dark: #0b0f19; /* Deep space black for cards and backgrounds */
   --light: #f1f1f1; /* Pure white for text */
-  --accent: #3c79f5; /* Accent color is the Deep Blue */
+  --accent: #3c79f5; /* Accent color - Deep Blue */
   --gray: #9ca3af; /* A muted, moon-rock gray for secondary text */
 
   --primary-glow: rgba(229, 231, 235, 0.2);
@@ -335,7 +335,7 @@ nav {
   100% { background-color: var(--primary); }
 }
 
-/* === SECTION TITLE STYLES (Final Consolidated Version) === */
+/* === SECTION TITLE STYLES === */
 .section-title {
   display: flex;
   flex-direction: column;
@@ -377,7 +377,7 @@ nav {
   padding: 0 16px;
 }
 
-/* NEW: Enlarge effect for ALL section headers */
+/* Enlarge effect for ALL section headers */
 .section-title h2:hover {
   letter-spacing: 10px;
   transform: scale(1.1) translateY(4px);
@@ -385,7 +385,7 @@ nav {
   white-space: nowrap;
 }
 
-/* For headers with extra link buttons (Achievements case) */
+/*(Achievements header special case) */
 .section-header-container {
   display: flex;
   justify-content: center;
@@ -681,7 +681,7 @@ nav {
   text-shadow: 0 0 8px var(--accent-glow);
 }
 
-/* === JOURNEY / TIMELINE === */
+/* === JOURNEY === */
 .journey {
   background-color: var(--dark);
   position: relative;
@@ -692,7 +692,7 @@ nav {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 20px; /* Added padding for better mobile spacing */
+  padding: 0 20px; /* more mobile spacing */
 }
 
 .timeline-container::after {
@@ -712,7 +712,7 @@ nav {
   padding: 10px 40px;
   position: relative;
   width: 50%;
-  margin-bottom: 30px; /* Added consistent spacing */
+  margin-bottom: 30px; /* consistent spacing */
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
@@ -1224,7 +1224,7 @@ footer::before {
   .projects-container { grid-template-columns: 1fr; }
   .achievements-grid { grid-template-columns: 1fr; }
 
-  /* --- Section Title Fixes --- */
+  /* --- Section Title --- */
   .section-title h2 {
     text-align: center;
   }
@@ -1234,7 +1234,7 @@ footer::before {
     color: var(--light);
   }
 
-  /* --- Timeline Fixes --- */
+  /* --- Timeline --- */
   .timeline-container::after {
     left: 28px;
   }

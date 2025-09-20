@@ -424,12 +424,14 @@ nav {
   padding: 0 16px;
 }
 
-/* Enlarge effect for ALL section headers */
-.section-title h2:hover {
-  letter-spacing: 10px;
-  transform: scale(1.1) translateY(4px);
-  color: var(--accent);
-  white-space: nowrap;
+/* Enlarge effect for ALL section headers except for mobile phones*/
+@media (min-width: 769px) {
+  .section-title h2:hover {
+    letter-spacing: 10px;
+    transform: scale(1.1) translateY(4px);
+    color: var(--accent);
+    white-space: nowrap;
+  }
 }
 
 /*(Achievements header special case) */
@@ -1523,12 +1525,6 @@ footer::before {
     transform: scale(1.1);
   }
 
-  /* --- FIX FOR HEADER HOVER EFFECT ON ZOOM --- */
-  .section-title h2:hover {
-    letter-spacing: 2px; /* Revert to the default non-hover letter-spacing */
-    transform: none; /* Completely disable the scale/translate effect */
-    color: var(--light); /* Revert to the default non-hover color */
-  }
 
   /* --- Other mobile fixes from your original file --- */
   .projects-container {

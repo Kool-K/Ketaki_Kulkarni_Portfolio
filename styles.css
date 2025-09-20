@@ -1433,9 +1433,18 @@ footer::before {
     font-size: 14px;
   }
   .section-header-container {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
+    justify-content: center; /* Centers items horizontally */
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  }
+
+  .section-header-container .section-header-link {
+    flex-shrink: 0; /* Prevents shrinking of flex items */
+    min-width: fit-content; /* Ensures minimum width based on content */
   }
 }
 
@@ -1525,7 +1534,6 @@ footer::before {
     transform: scale(1.1);
   }
 
-
   /* --- Other mobile fixes from your original file --- */
   .projects-container {
     grid-template-columns: 1fr;
@@ -1544,7 +1552,7 @@ footer::before {
   .timeline-item::after {
     display: none;
   } /*This will remove journey card circles for smaller screens and zoomed screens*/
-  
+
   .achievements-grid {
     grid-template-columns: 1fr;
   }

@@ -2,7 +2,7 @@
 
 Welcome to the repository for my personal portfolio website. This project was built to not only showcase my skills and projects but to be a standout project in its own right, featuring a dynamic and interactive "Cosmic" theme.
 
-**[➡️ View the Live Demo Here](https://kool-k.github.io/Ketaki_Kulkarni_Portfolio/)**
+**[➡️ View my Portfolio here!](https://kool-k.github.io/Ketaki_Kulkarni_Portfolio/)**
 
 ---
 
